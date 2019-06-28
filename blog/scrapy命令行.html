@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Scrapy常用命令 | Just do IT</title>
+    <meta name="description" content="I am who I am">
+    <link rel="icon" href="/favicon.ico">
+    
+    <link rel="preload" href="/assets/css/0.styles.58e874ed.css" as="style"><link rel="preload" href="/assets/js/app.a28f4598.js" as="script"><link rel="preload" href="/assets/js/11.f8fa751c.js" as="script"><link rel="prefetch" href="/assets/js/10.d8dddc70.js"><link rel="prefetch" href="/assets/js/12.3fb2cdf9.js"><link rel="prefetch" href="/assets/js/13.6575483b.js"><link rel="prefetch" href="/assets/js/14.22e9e100.js"><link rel="prefetch" href="/assets/js/15.c8e9c56a.js"><link rel="prefetch" href="/assets/js/16.9823de73.js"><link rel="prefetch" href="/assets/js/17.0c91c4cd.js"><link rel="prefetch" href="/assets/js/18.4feff952.js"><link rel="prefetch" href="/assets/js/19.76a4f4bc.js"><link rel="prefetch" href="/assets/js/20.1b19f6c0.js"><link rel="prefetch" href="/assets/js/21.4da7ec4f.js"><link rel="prefetch" href="/assets/js/22.3514c3a0.js"><link rel="prefetch" href="/assets/js/3.a2f27103.js"><link rel="prefetch" href="/assets/js/4.cc7f2c9d.js"><link rel="prefetch" href="/assets/js/5.8896083b.js"><link rel="prefetch" href="/assets/js/6.5ef8ddc8.js"><link rel="prefetch" href="/assets/js/7.c2f393d1.js"><link rel="prefetch" href="/assets/js/8.9608fbe6.js"><link rel="prefetch" href="/assets/js/9.8535bc6d.js"><link rel="prefetch" href="/assets/js/vendors~docsearch.2f4e28c8.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.58e874ed.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container no-sidebar"><header id="navbarWrapper" class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">Just do IT</span></a> <div class="links" style="max-width:nullpx;"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">主页</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title">分类</span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/categories/javaBase.html" class="nav-link">Java基础</a></li><li class="dropdown-item"><!----> <a href="/categories/springBoot.html" class="nav-link">Spring Boot</a></li><li class="dropdown-item"><!----> <a href="/categories/springCloud.html" class="nav-link">Spring Cloud</a></li><li class="dropdown-item"><!----> <a href="/categories/python.html" class="nav-link">Python</a></li><li class="dropdown-item"><!----> <a href="/categories/frontend.html" class="nav-link">前端杂货</a></li><li class="dropdown-item"><!----> <a href="/categories/other.html" class="nav-link">其他</a></li></ul></div></div><div class="nav-item"><a href="/tags/" class="nav-link">标签</a></div> <a href="https://github.com/lmmmmmm" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></nav></div></header> <div class="sidebar-mask"></div> <div class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">主页</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title">分类</span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/categories/javaBase.html" class="nav-link">Java基础</a></li><li class="dropdown-item"><!----> <a href="/categories/springBoot.html" class="nav-link">Spring Boot</a></li><li class="dropdown-item"><!----> <a href="/categories/springCloud.html" class="nav-link">Spring Cloud</a></li><li class="dropdown-item"><!----> <a href="/categories/python.html" class="nav-link">Python</a></li><li class="dropdown-item"><!----> <a href="/categories/frontend.html" class="nav-link">前端杂货</a></li><li class="dropdown-item"><!----> <a href="/categories/other.html" class="nav-link">其他</a></li></ul></div></div><div class="nav-item"><a href="/tags/" class="nav-link">标签</a></div> <a href="https://github.com/lmmmmmm" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></nav>  <!----> </div> <div class="page"> <div class="content"><h1 id="scrapy常用命令"><a href="#scrapy常用命令" aria-hidden="true" class="header-anchor">#</a> Scrapy常用命令</h1> <h2 id="_1-创建项目"><a href="#_1-创建项目" aria-hidden="true" class="header-anchor">#</a> 1 创建项目</h2> <div class="language-shell extra-class"><pre class="language-text"><code>scrapy startproject projectName
+</code></pre></div><p>创建成功后进入项目,项目结构如下所示:</p> <div class="language-shell extra-class"><pre class="language-text"><code>├── scrapy.cfg
+└── testproject
+    ├── __init__.py
+    ├── items.py
+    ├── middlewares.py
+    ├── pipelines.py
+    ├── __pycache__
+    ├── settings.py
+    └── spiders
+        ├── __init__.py
+        └── __pycache__
+</code></pre></div><h2 id="_2-生成spider"><a href="#_2-生成spider" aria-hidden="true" class="header-anchor">#</a> 2 生成Spider</h2> <h3 id="_2-1-基本生成方式"><a href="#_2-1-基本生成方式" aria-hidden="true" class="header-anchor">#</a> 2.1 基本生成方式</h3> <div class="language-shell extra-class"><pre class="language-text"><code>scrapy genspider baidu www.baidu.com
+</code></pre></div><p>该命令一共两个参数 <strong>scrapy genspider [args1] [agrs2]</strong>:第一个参数将生成爬虫的名称,第二个参数表示要爬取的网站.执行完成后,将在spiders文件夹下生成一个python文件,名称则为刚生成spider的第一个参数.该文件如下所示:</p> <div class="language-python extra-class"><pre class="language-python"><code><span class="token comment"># -*- coding: utf-8 -*-</span>
+<span class="token keyword">import</span> scrapy
+
+
+<span class="token keyword">class</span> <span class="token class-name">BaiduSpider</span><span class="token punctuation">(</span>scrapy<span class="token punctuation">.</span>Spider<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    name <span class="token operator">=</span> <span class="token string">'baidu'</span>
+    allowed_domains <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'www.baidu.com'</span><span class="token punctuation">]</span>
+    start_urls <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'http://www.baidu.com/'</span><span class="token punctuation">]</span>
+
+    <span class="token keyword">def</span> <span class="token function">parse</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> response<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">pass</span>
+</code></pre></div><h3 id="_2-2-带模板的生成方式"><a href="#_2-2-带模板的生成方式" aria-hidden="true" class="header-anchor">#</a> 2.2 带模板的生成方式</h3> <p>在生成spider时scrapy为我们提供了模板:我们可以使用以下命令来查看:</p> <div class="language-shell extra-class"><pre class="language-text"><code>scrapy genspider -l
+</code></pre></div><p>我们可以看到它提供了以下模板:</p> <ul><li>basic</li> <li>crawl</li> <li>csvfeed</li> <li>xmlfeed<br>
+这样我们在生成spider时可以加上这些模板,如:</li></ul> <div class="language-shell extra-class"><pre class="language-text"><code>scrapy genspider -t crawl zhihu www.zhihu.com
+</code></pre></div><p>然后我们就可以在spider文件夹下看到zhihu.py文件</p> <div class="language-python extra-class"><pre class="language-python"><code><span class="token comment"># -*- coding: utf-8 -*-</span>
+<span class="token keyword">import</span> scrapy
+<span class="token keyword">from</span> scrapy<span class="token punctuation">.</span>linkextractors <span class="token keyword">import</span> LinkExtractor
+<span class="token keyword">from</span> scrapy<span class="token punctuation">.</span>spiders <span class="token keyword">import</span> CrawlSpider<span class="token punctuation">,</span> Rule
+
+
+<span class="token keyword">class</span> <span class="token class-name">ZhihuSpider</span><span class="token punctuation">(</span>CrawlSpider<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    name <span class="token operator">=</span> <span class="token string">'zhihu'</span>
+    allowed_domains <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'www.zhihu.com'</span><span class="token punctuation">]</span>
+    start_urls <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'http://www.zhihu.com/'</span><span class="token punctuation">]</span>
+
+    rules <span class="token operator">=</span> <span class="token punctuation">(</span>
+        Rule<span class="token punctuation">(</span>LinkExtractor<span class="token punctuation">(</span>allow<span class="token operator">=</span>r<span class="token string">'Items/'</span><span class="token punctuation">)</span><span class="token punctuation">,</span> callback<span class="token operator">=</span><span class="token string">'parse_item'</span><span class="token punctuation">,</span> follow<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token punctuation">)</span>
+
+    <span class="token keyword">def</span> <span class="token function">parse_item</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> response<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        i <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+        <span class="token comment">#i['domain_id'] = response.xpath('//input[@id=&quot;sid&quot;]/@value').extract()</span>
+        <span class="token comment">#i['name'] = response.xpath('//div[@id=&quot;name&quot;]').extract()</span>
+        <span class="token comment">#i['description'] = response.xpath('//div[@id=&quot;description&quot;]').extract()</span>
+        <span class="token keyword">return</span> i
+</code></pre></div><h1 id="_3-运行sprider"><a href="#_3-运行sprider" aria-hidden="true" class="header-anchor">#</a> 3 运行sprider</h1> <div class="language-shell extra-class"><pre class="language-text"><code>scrapy crawl spidername
+</code></pre></div><p>spidername 为spider的名称,如刚生成的baidu,如果会打印出一些请求百度的日志,则说明Spider运行成功.</p> <h1 id="_4-检查代码是否有误"><a href="#_4-检查代码是否有误" aria-hidden="true" class="header-anchor">#</a> 4 检查代码是否有误</h1> <div class="language-shell extra-class"><pre class="language-text"><code>scrapy check
+</code></pre></div><h1 id="_5-查看项目中所有spider"><a href="#_5-查看项目中所有spider" aria-hidden="true" class="header-anchor">#</a> 5 查看项目中所有spider</h1> <div class="language- extra-class"><pre class="language-text"><code>$ scrapy list
+baidu
+zhihu
+</code></pre></div><h1 id="_6-fetch"><a href="#_6-fetch" aria-hidden="true" class="header-anchor">#</a> 6 fetch</h1> <p>帮助我们访问一个网页,将源代码返还.如:</p> <div class="language-shell extra-class"><pre class="language-text"><code>scrapy fetch http://www.baidu.com
+</code></pre></div><h2 id="_6-1支持参数"><a href="#_6-1支持参数" aria-hidden="true" class="header-anchor">#</a> 6.1支持参数</h2> <p>加上nolog参数将会直接返还源代码,不返还一些请求信息</p> <div class="language-shell extra-class"><pre class="language-text"><code>scrapy fetch --nolog http://www.baidu.com
+</code></pre></div><p>加上headers将会返还response Header</p> <div class="language-shell extra-class"><pre class="language-text"><code> fetch  --headers  http://www.baidu.com
+</code></pre></div><div class="language-shell extra-class"><pre class="language-text"><code>&gt; Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+&gt; User-Agent: Scrapy/1.5.2 (+https://scrapy.org)
+&gt; Accept-Language: en
+&gt; Accept-Encoding: gzip,deflate
+&gt;
+&lt; Last-Modified: Mon, 23 Jan 2017 13:27:36 GMT
+&lt; Cache-Control: private, no-cache, no-store, proxy-revalidate, no-transform
+&lt; Date: Tue, 29 Jan 2019 10:45:49 GMT
+&lt; Content-Type: text/html
+&lt; Server: bfe/1.0.8.18
+&lt; Pragma: no-cache
+&lt; Set-Cookie: BDORZ=27315; max-age=86400; domain=.baidu.com; path=/
+</code></pre></div><h1 id="_7-shell"><a href="#_7-shell" aria-hidden="true" class="header-anchor">#</a> 7 shell</h1> <p>可以使我们以交互模式访问一个网站,如:</p> <div class="language-shell extra-class"><pre class="language-text"><code>scrapy shell https://www.baidu.com
+</code></pre></div><h1 id="_8-获取当前配置信息"><a href="#_8-获取当前配置信息" aria-hidden="true" class="header-anchor">#</a> 8 获取当前配置信息</h1> <p>获取settings.py中的配置信息:如</p> <div class="language- extra-class"><pre class="language-text"><code> scrapy settings --get MONGO_DB
+</code></pre></div></div> <div id="valine" data-v-22147046></div> <!----> <!----> <div class="page-edit"><!----> <!----></div> <!----> </div> <!----> <!----></div></div>
+    <script src="/assets/js/app.a28f4598.js" defer></script><script src="/assets/js/11.f8fa751c.js" defer></script>
+  </body>
+</html>

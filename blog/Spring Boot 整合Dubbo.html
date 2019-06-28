@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Spring Boot + Zookeeper + Dubbo | Just do IT</title>
+    <meta name="description" content="I am who I am">
+    <link rel="icon" href="/favicon.ico">
+    
+    <link rel="preload" href="/assets/css/0.styles.58e874ed.css" as="style"><link rel="preload" href="/assets/js/app.a28f4598.js" as="script"><link rel="preload" href="/assets/js/6.5ef8ddc8.js" as="script"><link rel="prefetch" href="/assets/js/10.d8dddc70.js"><link rel="prefetch" href="/assets/js/11.f8fa751c.js"><link rel="prefetch" href="/assets/js/12.3fb2cdf9.js"><link rel="prefetch" href="/assets/js/13.6575483b.js"><link rel="prefetch" href="/assets/js/14.22e9e100.js"><link rel="prefetch" href="/assets/js/15.c8e9c56a.js"><link rel="prefetch" href="/assets/js/16.9823de73.js"><link rel="prefetch" href="/assets/js/17.0c91c4cd.js"><link rel="prefetch" href="/assets/js/18.4feff952.js"><link rel="prefetch" href="/assets/js/19.76a4f4bc.js"><link rel="prefetch" href="/assets/js/20.1b19f6c0.js"><link rel="prefetch" href="/assets/js/21.4da7ec4f.js"><link rel="prefetch" href="/assets/js/22.3514c3a0.js"><link rel="prefetch" href="/assets/js/3.a2f27103.js"><link rel="prefetch" href="/assets/js/4.cc7f2c9d.js"><link rel="prefetch" href="/assets/js/5.8896083b.js"><link rel="prefetch" href="/assets/js/7.c2f393d1.js"><link rel="prefetch" href="/assets/js/8.9608fbe6.js"><link rel="prefetch" href="/assets/js/9.8535bc6d.js"><link rel="prefetch" href="/assets/js/vendors~docsearch.2f4e28c8.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.58e874ed.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container no-sidebar"><header id="navbarWrapper" class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">Just do IT</span></a> <div class="links" style="max-width:nullpx;"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">主页</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title">分类</span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/categories/javaBase.html" class="nav-link">Java基础</a></li><li class="dropdown-item"><!----> <a href="/categories/springBoot.html" class="nav-link">Spring Boot</a></li><li class="dropdown-item"><!----> <a href="/categories/springCloud.html" class="nav-link">Spring Cloud</a></li><li class="dropdown-item"><!----> <a href="/categories/python.html" class="nav-link">Python</a></li><li class="dropdown-item"><!----> <a href="/categories/frontend.html" class="nav-link">前端杂货</a></li><li class="dropdown-item"><!----> <a href="/categories/other.html" class="nav-link">其他</a></li></ul></div></div><div class="nav-item"><a href="/tags/" class="nav-link">标签</a></div> <a href="https://github.com/lmmmmmm" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></nav></div></header> <div class="sidebar-mask"></div> <div class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">主页</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title">分类</span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/categories/javaBase.html" class="nav-link">Java基础</a></li><li class="dropdown-item"><!----> <a href="/categories/springBoot.html" class="nav-link">Spring Boot</a></li><li class="dropdown-item"><!----> <a href="/categories/springCloud.html" class="nav-link">Spring Cloud</a></li><li class="dropdown-item"><!----> <a href="/categories/python.html" class="nav-link">Python</a></li><li class="dropdown-item"><!----> <a href="/categories/frontend.html" class="nav-link">前端杂货</a></li><li class="dropdown-item"><!----> <a href="/categories/other.html" class="nav-link">其他</a></li></ul></div></div><div class="nav-item"><a href="/tags/" class="nav-link">标签</a></div> <a href="https://github.com/lmmmmmm" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></nav>  <!----> </div> <div class="page"> <div class="content"><h2 id="_1-背景"><a href="#_1-背景" aria-hidden="true" class="header-anchor">#</a> 1 背景</h2> <p>公司服务器坏了，闲着没事干。
+github地址：https://github.com/lmmmmmm/MyWeb.git</p> <h2 id="_2-环境"><a href="#_2-环境" aria-hidden="true" class="header-anchor">#</a> 2 环境</h2> <blockquote><p>Ubuntu16.04、JDK 10、Zookeeper-3.4.10、Spring Boot 2.1、Maven 3.3.9</p></blockquote> <h2 id="_3-配置zookeeper"><a href="#_3-配置zookeeper" aria-hidden="true" class="header-anchor">#</a> 3  配置zookeeper</h2> <p>1、 从<a href="http://zookeeper.apache.org/releases.html#download" target="_blank" rel="noopener noreferrer">这里<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>下载Zookeeper。下载后解压zookeeper。进入conf目录，复制一份zoo_sample.cfg重命名为zoo.cfg。主要命令如下</p> <div class="language- extra-class"><pre class="language-text"><code>tar -zxf zookeeper-3.4.10.tar.gz 
+cd zookeeper-3.4.10/conf
+cp zoo_sample.cfg zoo.cfg
+</code></pre></div><p>2、进入bin目录，执行下面命令即可启动zk、停止zk、查看zk。</p> <div class="language- extra-class"><pre class="language-text"><code>cd ../bin/
+bash zkServer.sh start  //启动zk，当出现Starting zookeeper ... STARTED 就说明启动成功了
+bash zkServer.sh status //查看状态，当出现Mode: standalone 就证明正在运行
+bash zkServer.sh stop //停止zk
+</code></pre></div><h2 id="_4-创建dubbo应用"><a href="#_4-创建dubbo应用" aria-hidden="true" class="header-anchor">#</a> 4 创建dubbo应用</h2> <blockquote><p>说明：本应用基于maven，没有maven请自行安装。</p></blockquote> <p>项目结构如下所示：
+<img src="https://img-blog.csdnimg.cn/20181106175232762.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2NsaWNrXzE=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p> <p>该应用一共有三个模块。
+1 dubbo-api：提供接口供dubbo-prodiver和dubbo-consumer使用。
+2 dubbo-prodiver：实现api模块提供的接口，注册dubbo服务，给dubbo-consumer提供服务调用。
+3 dubbo-consumer：调用接口完成消费。</p> <h3 id="_4-1-dubbo-api"><a href="#_4-1-dubbo-api" aria-hidden="true" class="header-anchor">#</a> 4.1 dubbo-api</h3> <p>项目结构如下所示：</p> <p>创建一个简单的maven工程。pom文件如下：</p> <div class="language- extra-class"><pre class="language-text"><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;project xmlns=&quot;http://maven.apache.org/POM/4.0.0&quot;
+         xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+         xsi:schemaLocation=&quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&quot;&gt;
+    &lt;parent&gt;
+        &lt;artifactId&gt;MyWeb&lt;/artifactId&gt;
+        &lt;groupId&gt;com.lm&lt;/groupId&gt;
+        &lt;version&gt;1.0-SNAPSHOT&lt;/version&gt;
+    &lt;/parent&gt;
+    &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
+
+    &lt;groupId&gt;com.lm&lt;/groupId&gt;
+    &lt;artifactId&gt;dubbo-api&lt;/artifactId&gt;
+    &lt;version&gt;1.0-SNAPSHOT&lt;/version&gt;
+    &lt;packaging&gt;jar&lt;/packaging&gt;
+
+    &lt;properties&gt;
+        &lt;project.build.sourceEncoding&gt;UTF-8&lt;/project.build.sourceEncoding&gt;
+        &lt;maven.compiler.source&gt;10&lt;/maven.compiler.source&gt;
+        &lt;maven.compiler.target&gt;10&lt;/maven.compiler.target&gt;
+    &lt;/properties&gt;
+&lt;/project&gt;
+</code></pre></div><p>这里面的坑是，当我创建完api模块后，编译该模块时始终报下面的错误。</p> <div class="language- extra-class"><pre class="language-text"><code>[ERROR] 不再支持源选项 5。请使用 6 或更高版本。
+[ERROR] 不再支持目标选项 1.5。请使用 1.6 或更高版本。
+</code></pre></div><p>后来百度后发现是pom文件中没有加下面的配置导致的。</p> <div class="language- extra-class"><pre class="language-text"><code>   &lt;properties&gt;
+        &lt;project.build.sourceEncoding&gt;UTF-8&lt;/project.build.sourceEncoding&gt;
+        &lt;maven.compiler.source&gt;10&lt;/maven.compiler.source&gt;
+        &lt;maven.compiler.target&gt;10&lt;/maven.compiler.target&gt;
+    &lt;/properties&gt;
+</code></pre></div><p><strong>创建一个User类</strong></p> <div class="language- extra-class"><pre class="language-text"><code>package com.lm.user;
+
+/**
+ * @author lming.41032@gmail.com
+ * @date 18-11-3 下午11:29
+ */
+public class User {
+
+    private Integer id;
+    private String userName;
+    private String password;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+}
+
+</code></pre></div><p><strong>创建一个UserService</strong></p> <div class="language- extra-class"><pre class="language-text"><code>package com.lm.user.service;
+
+import com.lm.user.User;
+
+/**
+ * @author lming.41032@gmail.com
+ * @date 18-11-3 下午11:30
+ */
+public interface UserService {
+
+    Boolean login(String username, String password);
+
+    User register(String userName, String password);
+}
+</code></pre></div><p>dubbo-api模块到此基本结束。</p> <h3 id="_4-2-dubbo-prodiver"><a href="#_4-2-dubbo-prodiver" aria-hidden="true" class="header-anchor">#</a> 4.2 dubbo-prodiver</h3> <p>项目结构如下所示：
+<img src="https://img-blog.csdnimg.cn/20181106175841736.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2NsaWNrXzE=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">
+创建一个Spring Boot工程，可以从<a href="https://start.spring.io/" target="_blank" rel="noopener noreferrer">这里<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>使用spring Initializr初始化一个Spring Boot项目，也可以用IDEA初始化一个Spring Boot项目。<font color="red" size="4">别忘了加入dubbo-api的依赖。</font>dubbo-prodiver项目pom如下所示：</p> <div class="language- extra-class"><pre class="language-text"><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;project xmlns=&quot;http://maven.apache.org/POM/4.0.0&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+         xsi:schemaLocation=&quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&quot;&gt;
+    &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
+
+    &lt;groupId&gt;com.lm&lt;/groupId&gt;
+    &lt;artifactId&gt;dubbo-provider&lt;/artifactId&gt;
+    &lt;version&gt;0.0.1-SNAPSHOT&lt;/version&gt;
+    &lt;packaging&gt;jar&lt;/packaging&gt;
+
+    &lt;name&gt;dubbo-provider&lt;/name&gt;
+    &lt;description&gt;Demo project for Spring Boot&lt;/description&gt;
+
+    &lt;parent&gt;
+        &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+        &lt;artifactId&gt;spring-boot-starter-parent&lt;/artifactId&gt;
+        &lt;version&gt;2.1.0.RELEASE&lt;/version&gt;
+        &lt;relativePath/&gt;
+    &lt;/parent&gt;
+
+    &lt;properties&gt;
+        &lt;project.build.sourceEncoding&gt;UTF-8&lt;/project.build.sourceEncoding&gt;
+        &lt;project.reporting.outputEncoding&gt;UTF-8&lt;/project.reporting.outputEncoding&gt;
+        &lt;java.version&gt;1.8&lt;/java.version&gt;
+    &lt;/properties&gt;
+
+    &lt;dependencies&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;com.lm&lt;/groupId&gt;
+            &lt;artifactId&gt;dubbo-api&lt;/artifactId&gt;
+            &lt;version&gt;1.0-SNAPSHOT&lt;/version&gt;
+        &lt;/dependency&gt;
+        
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.apache.zookeeper&lt;/groupId&gt;
+            &lt;artifactId&gt;zookeeper&lt;/artifactId&gt;
+            &lt;version&gt;3.4.6&lt;/version&gt;
+            &lt;exclusions&gt;
+                &lt;exclusion&gt;
+                    &lt;groupId&gt;org.slf4j&lt;/groupId&gt;
+                    &lt;artifactId&gt;slf4j-log4j12&lt;/artifactId&gt;
+                &lt;/exclusion&gt;
+            &lt;/exclusions&gt;
+        &lt;/dependency&gt;
+
+        &lt;dependency&gt;
+            &lt;groupId&gt;io.dubbo.springboot&lt;/groupId&gt;
+            &lt;artifactId&gt;spring-boot-starter-dubbo&lt;/artifactId&gt;
+            &lt;version&gt;1.0.0&lt;/version&gt;
+        &lt;/dependency&gt;
+
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+            &lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt;
+        &lt;/dependency&gt;
+
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+            &lt;artifactId&gt;spring-boot-starter-test&lt;/artifactId&gt;
+            &lt;scope&gt;test&lt;/scope&gt;
+        &lt;/dependency&gt;
+    &lt;/dependencies&gt;
+
+    &lt;build&gt;
+        &lt;plugins&gt;
+            &lt;plugin&gt;
+                &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+                &lt;artifactId&gt;spring-boot-maven-plugin&lt;/artifactId&gt;
+            &lt;/plugin&gt;
+        &lt;/plugins&gt;
+    &lt;/build&gt;
+&lt;/project&gt;
+</code></pre></div><p>创建一个UserService的实现UserServiceImpl，这里只是一个简单的实现。</p> <div class="language- extra-class"><pre class="language-text"><code>package com.lm.dubboprovider.user.impl;
+
+import com.lm.user.User;
+import com.lm.user.service.UserService;
+import org.springframework.stereotype.Service;
+
+/**
+ * @author lming.41032@gmail.com
+ * @date 18-11-4 下午2:55
+ */
+@Service
+public class UserServiceImpl implements UserService {
+
+    private static final String USERNAME = &quot;lm&quot;;
+    private static final String PASSWORD = &quot;123&quot;;
+
+    @Override
+    public Boolean login(String userName, String password) {
+        if (USERNAME.equals(userName) &amp;&amp; PASSWORD.equals(password)) {
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public User register(String userName, String password) {
+        User user = new User();
+        user.setId(1);
+        user.setUserName(userName);
+        user.setPassword(password);
+        return user;
+    }
+}
+</code></pre></div><p>创建完成后在该模块下resource创建一个dubbo目录，在dubbo目录中创建<font size="4" color="red">dubbo-provider.xml文件</font>，该文件长这个样子:</p> <div class="language- extra-class"><pre class="language-text"><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;
+       xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+       xmlns:dubbo=&quot;http://code.alibabatech.com/schema/dubbo&quot;
+       xsi:schemaLocation=&quot;http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://code.alibabatech.com/schema/dubbo
+        http://code.alibabatech.com/schema/dubbo/dubbo.xsd
+        &quot;&gt;
+    &lt;dubbo:application name=&quot;dubbo-provider&quot;/&gt;
+
+    &lt;!-- 注册中心配置，使用zookeeper注册中心暴露服务地址 --&gt;
+    &lt;dubbo:registry address=&quot;zookeeper://127.0.0.1:2181&quot; timeout=&quot;60000&quot;/&gt;
+
+    &lt;!-- 协议配置，由服务提供方指定，消费方被动接受--&gt;
+    &lt;dubbo:protocol name=&quot;dubbo&quot; port=&quot;20880&quot;/&gt;
+
+    &lt;dubbo:service interface=&quot;com.lm.user.service.UserService&quot; ref=&quot;userService&quot;/&gt;
+    &lt;!-- 具体的实现bean，id与上面的ref要一致--&gt;
+    &lt;bean id=&quot;userService&quot; class=&quot;com.lm.dubboprovider.user.impl.UserServiceImpl&quot;/&gt;
+&lt;/beans&gt;
+</code></pre></div><p>该文件中 可能下面的文件找不到，应为这些域名阿里已经不在使用了</p> <div class="language- extra-class"><pre class="language-text"><code>xmlns:dubbo=&quot;http://code.alibabatech.com/schema/dubbo
+http://code.alibabatech.com/schema/dubbo
+</code></pre></div><p>打开设置，找到Schemas and DTDs
+<img src="https://img-blog.csdnimg.cn/20181106165825173.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2NsaWNrXzE=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">
+选择右上角的绿色的+号，然后添加，这里File可以在本地maven仓库中的dubbo jar包中的文件，也可以自己离线下载在添加。
+<img src="https://img-blog.csdnimg.cn/20181106170612279.png" alt="在这里插入图片描述">
+配置完成后，<font size="4" color="red">需要在启动类上引入该文件：</font> <img src="https://img-blog.csdnimg.cn/20181106171326900.png" alt="在这里插入图片描述"></p> <p>最后在配置一下tomcat的端口：在resource中的application文件中添加，我这里是使用yml格式来设置的。
+<img src="https://img-blog.csdnimg.cn/20181106171515772.png" alt="在这里插入图片描述">
+dubbo-provider 模块到此基本配置完成。</p> <h3 id="_4-3-dubbo-consumer模块"><a href="#_4-3-dubbo-consumer模块" aria-hidden="true" class="header-anchor">#</a> 4.3 dubbo-consumer模块</h3> <p>项目结构如下所示：
+<img src="https://img-blog.csdnimg.cn/20181106180114307.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2NsaWNrXzE=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">
+同dubbo-provider模块一样， 创建一个Spring Boot项目。<font size="4" color="red">同样的，也要依赖dubbo-api模块</font>，pom文件如下所示：</p> <div class="language- extra-class"><pre class="language-text"><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;project xmlns=&quot;http://maven.apache.org/POM/4.0.0&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+         xsi:schemaLocation=&quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&quot;&gt;
+    &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
+
+    &lt;groupId&gt;com.lm&lt;/groupId&gt;
+    &lt;artifactId&gt;dubbo-consumer&lt;/artifactId&gt;
+    &lt;version&gt;0.0.1-SNAPSHOT&lt;/version&gt;
+    &lt;packaging&gt;jar&lt;/packaging&gt;
+
+    &lt;name&gt;dubbo-consumer&lt;/name&gt;
+    &lt;description&gt;Demo project for Spring Boot&lt;/description&gt;
+
+    &lt;parent&gt;
+        &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+        &lt;artifactId&gt;spring-boot-starter-parent&lt;/artifactId&gt;
+        &lt;version&gt;2.1.0.RELEASE&lt;/version&gt;
+        &lt;relativePath/&gt; &lt;!-- lookup parent from repository --&gt;
+    &lt;/parent&gt;
+
+    &lt;properties&gt;
+        &lt;project.build.sourceEncoding&gt;UTF-8&lt;/project.build.sourceEncoding&gt;
+        &lt;project.reporting.outputEncoding&gt;UTF-8&lt;/project.reporting.outputEncoding&gt;
+        &lt;java.version&gt;1.8&lt;/java.version&gt;
+    &lt;/properties&gt;
+
+    &lt;dependencies&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;com.lm&lt;/groupId&gt;
+            &lt;artifactId&gt;dubbo-api&lt;/artifactId&gt;
+            &lt;version&gt;1.0-SNAPSHOT&lt;/version&gt;
+        &lt;/dependency&gt;
+
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.apache.zookeeper&lt;/groupId&gt;
+            &lt;artifactId&gt;zookeeper&lt;/artifactId&gt;
+            &lt;version&gt;3.4.6&lt;/version&gt;
+            &lt;exclusions&gt;
+                &lt;exclusion&gt;
+                    &lt;groupId&gt;org.slf4j&lt;/groupId&gt;
+                    &lt;artifactId&gt;slf4j-log4j12&lt;/artifactId&gt;
+                &lt;/exclusion&gt;
+            &lt;/exclusions&gt;
+        &lt;/dependency&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;io.dubbo.springboot&lt;/groupId&gt;
+            &lt;artifactId&gt;spring-boot-starter-dubbo&lt;/artifactId&gt;
+            &lt;version&gt;1.0.0&lt;/version&gt;
+        &lt;/dependency&gt;
+
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+            &lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt;
+        &lt;/dependency&gt;
+
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+            &lt;artifactId&gt;spring-boot-starter-test&lt;/artifactId&gt;
+            &lt;scope&gt;test&lt;/scope&gt;
+        &lt;/dependency&gt;
+    &lt;/dependencies&gt;
+
+    &lt;build&gt;
+        &lt;plugins&gt;
+            &lt;plugin&gt;
+                &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+                &lt;artifactId&gt;spring-boot-maven-plugin&lt;/artifactId&gt;
+            &lt;/plugin&gt;
+        &lt;/plugins&gt;
+    &lt;/build&gt;
+&lt;/project&gt;
+</code></pre></div><p>创建完成后，建立一个UserRestController来调用Userservice，这里只是一个简单的测试。</p> <div class="language- extra-class"><pre class="language-text"><code>package com.lm.dubboconsumer.user;
+
+import com.lm.user.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import javax.servlet.http.HttpServletRequest;
+
+/**
+ * @author lming.41032@gmail.com
+ * @date 18-11-5 下午5:10
+ */
+@RestController
+@RequestMapping(&quot;user&quot;)
+public class UserRestController {
+
+    @Autowired
+    private UserService userService;
+
+    @GetMapping(&quot;login&quot;)
+    public String login(HttpServletRequest request) {
+        String userName = request.getParameter(&quot;username&quot;);
+        String password = request.getParameter(&quot;password&quot;);
+        Boolean flag = userService.login(userName, password);
+        if (flag) {
+            return &quot;登录成功！&quot;;
+        } else {
+            return &quot;登录失败！&quot;;
+        }
+    } 
+}
+</code></pre></div><p>同样的，在resource中创建一个dubbo文件夹再创建一个dubbo-consumer文件。</p> <div class="language- extra-class"><pre class="language-text"><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;
+       xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+       xmlns:dubbo=&quot;http://code.alibabatech.com/schema/dubbo&quot;
+       xsi:schemaLocation=&quot;http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://code.alibabatech.com/schema/dubbo
+        http://code.alibabatech.com/schema/dubbo/dubbo.xsd
+        &quot;&gt;
+    &lt;dubbo:application name=&quot;dubbo-consumer&quot;/&gt;
+
+    &lt;dubbo:registry address=&quot;zookeeper://127.0.0.1:2181&quot; timeout=&quot;60000&quot;/&gt;
+
+    &lt;dubbo:reference id=&quot;userService&quot; interface=&quot;com.lm.user.service.UserService&quot;/&gt;
+&lt;/beans&gt;
+</code></pre></div><p>然后在启动类上引入该文件
+<img src="https://img-blog.csdnimg.cn/20181106172530674.png" alt="在这里插入图片描述">
+最后在配置一下tomcat端口：
+<img src="https://img-blog.csdnimg.cn/20181106172609307.png" alt="在这里插入图片描述"></p> <p>dubbo-consumer模块到此也配置完成了。</p> <h2 id="_5-启动服务"><a href="#_5-启动服务" aria-hidden="true" class="header-anchor">#</a> 5 启动服务</h2> <p>先启动zookeeper，然后在启动dubbo-provider项目，最后启动dubbo-consumer项目，访问</p> <blockquote><p>http://localhost:8082/user/login?username=lm&amp;password=123</p></blockquote> <p><img src="https://img-blog.csdnimg.cn/20181106173231237.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2NsaWNrXzE=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p> <h2 id="总结"><a href="#总结" aria-hidden="true" class="header-anchor">#</a> 总结</h2> <p>一直在使用dubbo，但是自己从来没有搭建过。本次搭建，主要学到了Spring Boot 是怎么配置dubbo的，dubbo服务是怎么注册的，注册后又是怎么调用的。简单的记录一下。</p></div> <div id="valine" data-v-22147046></div> <!----> <!----> <div class="page-edit"><!----> <!----></div> <!----> </div> <!----> <!----></div></div>
+    <script src="/assets/js/app.a28f4598.js" defer></script><script src="/assets/js/6.5ef8ddc8.js" defer></script>
+  </body>
+</html>

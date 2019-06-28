@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Spring Boot后端返还JSON数据和统一异常处理 | Just do IT</title>
+    <meta name="description" content="I am who I am">
+    <link rel="icon" href="/favicon.ico">
+    
+    <link rel="preload" href="/assets/css/0.styles.58e874ed.css" as="style"><link rel="preload" href="/assets/js/app.a28f4598.js" as="script"><link rel="preload" href="/assets/js/7.c2f393d1.js" as="script"><link rel="prefetch" href="/assets/js/10.d8dddc70.js"><link rel="prefetch" href="/assets/js/11.f8fa751c.js"><link rel="prefetch" href="/assets/js/12.3fb2cdf9.js"><link rel="prefetch" href="/assets/js/13.6575483b.js"><link rel="prefetch" href="/assets/js/14.22e9e100.js"><link rel="prefetch" href="/assets/js/15.c8e9c56a.js"><link rel="prefetch" href="/assets/js/16.9823de73.js"><link rel="prefetch" href="/assets/js/17.0c91c4cd.js"><link rel="prefetch" href="/assets/js/18.4feff952.js"><link rel="prefetch" href="/assets/js/19.76a4f4bc.js"><link rel="prefetch" href="/assets/js/20.1b19f6c0.js"><link rel="prefetch" href="/assets/js/21.4da7ec4f.js"><link rel="prefetch" href="/assets/js/22.3514c3a0.js"><link rel="prefetch" href="/assets/js/3.a2f27103.js"><link rel="prefetch" href="/assets/js/4.cc7f2c9d.js"><link rel="prefetch" href="/assets/js/5.8896083b.js"><link rel="prefetch" href="/assets/js/6.5ef8ddc8.js"><link rel="prefetch" href="/assets/js/8.9608fbe6.js"><link rel="prefetch" href="/assets/js/9.8535bc6d.js"><link rel="prefetch" href="/assets/js/vendors~docsearch.2f4e28c8.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.58e874ed.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container no-sidebar"><header id="navbarWrapper" class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">Just do IT</span></a> <div class="links" style="max-width:nullpx;"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">主页</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title">分类</span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/categories/javaBase.html" class="nav-link">Java基础</a></li><li class="dropdown-item"><!----> <a href="/categories/springBoot.html" class="nav-link">Spring Boot</a></li><li class="dropdown-item"><!----> <a href="/categories/springCloud.html" class="nav-link">Spring Cloud</a></li><li class="dropdown-item"><!----> <a href="/categories/python.html" class="nav-link">Python</a></li><li class="dropdown-item"><!----> <a href="/categories/frontend.html" class="nav-link">前端杂货</a></li><li class="dropdown-item"><!----> <a href="/categories/other.html" class="nav-link">其他</a></li></ul></div></div><div class="nav-item"><a href="/tags/" class="nav-link">标签</a></div> <a href="https://github.com/lmmmmmm" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></nav></div></header> <div class="sidebar-mask"></div> <div class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">主页</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title">分类</span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/categories/javaBase.html" class="nav-link">Java基础</a></li><li class="dropdown-item"><!----> <a href="/categories/springBoot.html" class="nav-link">Spring Boot</a></li><li class="dropdown-item"><!----> <a href="/categories/springCloud.html" class="nav-link">Spring Cloud</a></li><li class="dropdown-item"><!----> <a href="/categories/python.html" class="nav-link">Python</a></li><li class="dropdown-item"><!----> <a href="/categories/frontend.html" class="nav-link">前端杂货</a></li><li class="dropdown-item"><!----> <a href="/categories/other.html" class="nav-link">其他</a></li></ul></div></div><div class="nav-item"><a href="/tags/" class="nav-link">标签</a></div> <a href="https://github.com/lmmmmmm" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></nav>  <!----> </div> <div class="page"> <div class="content"><h2 id="_1-背景"><a href="#_1-背景" aria-hidden="true" class="header-anchor">#</a> 1 背景</h2> <blockquote><p>现在项目都是前后端分离，前后端通过JSON交换数据，这时，后端就需要提供健全的api接口供前端调用。本文主要介绍自己封装的JsonResult与Spring Boot的统一异常处理，<a href="https://github.com/lmmmmmm/MyWeb" target="_blank" rel="noopener noreferrer">项目地址在这里<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>。</p></blockquote> <h2 id="_2-jsonresult"><a href="#_2-jsonresult" aria-hidden="true" class="header-anchor">#</a> 2 JsonResult</h2> <p>JsonResult是自己封装的一个返还Json，主要由返还码、返还信息，以及返还数据构成，其中提供了静态方法success、failed可供controller层直接调用。废话不多说，直接上代码供大家参考。</p> <div class="language-java extra-class"><pre class="language-java"><code><span class="token keyword">package</span> com<span class="token punctuation">.</span>lm<span class="token punctuation">.</span>common<span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>commons<span class="token punctuation">.</span>lang3<span class="token punctuation">.</span>builder<span class="token punctuation">.</span>ToStringBuilder<span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> java<span class="token punctuation">.</span>io<span class="token punctuation">.</span>Serializable<span class="token punctuation">;</span>
+<span class="token keyword">import</span> java<span class="token punctuation">.</span>util<span class="token punctuation">.</span>Objects<span class="token punctuation">;</span>
+
+<span class="token comment">/**
+ * @author lming.41032@gmail.com
+ * @date 18-11-7 下午12:25
+ */</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">JsonResult</span> <span class="token keyword">implements</span> <span class="token class-name">Serializable</span> <span class="token punctuation">{</span>
+
+    <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">final</span> <span class="token keyword">long</span> serialVersionUID <span class="token operator">=</span> <span class="token number">5598308977637490090</span>L<span class="token punctuation">;</span>
+
+    <span class="token keyword">private</span> <span class="token keyword">int</span> status<span class="token punctuation">;</span>
+
+    <span class="token keyword">private</span> String message<span class="token punctuation">;</span>
+
+    <span class="token keyword">private</span> Object data<span class="token punctuation">;</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">getStatus</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> status<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setStatus</span><span class="token punctuation">(</span><span class="token keyword">int</span> status<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>status <span class="token operator">=</span> status<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> String <span class="token function">getMessage</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> message<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setMessage</span><span class="token punctuation">(</span>String message<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>message <span class="token operator">=</span> message<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setData</span><span class="token punctuation">(</span>Object data<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>data <span class="token operator">=</span> data<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> Object <span class="token function">getData</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> data<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">static</span> JsonResult <span class="token function">success</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token function">success</span><span class="token punctuation">(</span>null<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">static</span> JsonResult <span class="token function">success</span><span class="token punctuation">(</span>Object data<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        JsonResult jsonResult <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">JsonResult</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        jsonResult<span class="token punctuation">.</span><span class="token function">setStatus</span><span class="token punctuation">(</span><span class="token number">200</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        jsonResult<span class="token punctuation">.</span><span class="token function">setMessage</span><span class="token punctuation">(</span><span class="token string">&quot;SUCCESS&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>data <span class="token operator">!=</span> null<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            jsonResult<span class="token punctuation">.</span><span class="token function">setData</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> jsonResult<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">static</span> JsonResult <span class="token function">failed</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token function">failed</span><span class="token punctuation">(</span><span class="token string">&quot;FAILED&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">static</span> JsonResult <span class="token function">failed</span><span class="token punctuation">(</span>String message<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        JsonResult jsonResult <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">JsonResult</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        jsonResult<span class="token punctuation">.</span><span class="token function">setStatus</span><span class="token punctuation">(</span><span class="token number">500</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        jsonResult<span class="token punctuation">.</span><span class="token function">setMessage</span><span class="token punctuation">(</span>message<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> jsonResult<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">equals</span><span class="token punctuation">(</span>Object o<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">this</span> <span class="token operator">==</span> o<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token punctuation">(</span>o <span class="token keyword">instanceof</span> <span class="token class-name">JsonResult</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        JsonResult result <span class="token operator">=</span> <span class="token punctuation">(</span>JsonResult<span class="token punctuation">)</span> o<span class="token punctuation">;</span>
+        <span class="token keyword">return</span> status <span class="token operator">==</span> result<span class="token punctuation">.</span>status <span class="token operator">&amp;&amp;</span>
+                Objects<span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span>message<span class="token punctuation">,</span> result<span class="token punctuation">.</span>message<span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span>
+                Objects<span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span>data<span class="token punctuation">,</span> result<span class="token punctuation">.</span>data<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">hashCode</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> Objects<span class="token punctuation">.</span><span class="token function">hash</span><span class="token punctuation">(</span>status<span class="token punctuation">,</span> message<span class="token punctuation">,</span> data<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> String <span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">ToStringBuilder</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span>
+                <span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span><span class="token string">&quot;status&quot;</span><span class="token punctuation">,</span> status<span class="token punctuation">)</span>
+                <span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span><span class="token string">&quot;message&quot;</span><span class="token punctuation">,</span> message<span class="token punctuation">)</span>
+                <span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span><span class="token string">&quot;data&quot;</span><span class="token punctuation">,</span> data<span class="token punctuation">)</span>
+                <span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+<span class="token punctuation">}</span>
+
+</code></pre></div><p>以下就是一个模拟登录成功返还的Json信息.</p> <div class="language-json extra-class"><pre class="language-json"><code><span class="token punctuation">{</span>
+	<span class="token property">&quot;status&quot;</span><span class="token operator">:</span><span class="token number">200</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;message&quot;</span><span class="token operator">:</span><span class="token string">&quot;SUCCESS&quot;</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;data&quot;</span><span class="token operator">:</span>
+    	<span class="token punctuation">{</span>
+            <span class="token property">&quot;id&quot;</span><span class="token operator">:</span><span class="token number">1</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;userName&quot;</span><span class="token operator">:</span><span class="token string">&quot;lmm&quot;</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;password&quot;</span><span class="token operator">:</span><span class="token string">&quot;123&quot;</span>
+        <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h2 id="_3-统一异常处理（返还json）"><a href="#_3-统一异常处理（返还json）" aria-hidden="true" class="header-anchor">#</a> 3 统一异常处理（返还Json）</h2> <p>在前后端分离项目中，无论后台程序出现了什么问题，我们都要返还一个错误的Json信息。这个错误的信息可以包括错误码，错误信息等，这样不仅仅方便前端处理，也方便后期运维、开发人员快速的定位到错误。下面就是一个错误的Json信息。</p> <div class="language-json extra-class"><pre class="language-json"><code>	<span class="token punctuation">{</span>
+    	<span class="token property">&quot;status&quot;</span><span class="token operator">:</span><span class="token number">700</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;message&quot;</span><span class="token operator">:</span><span class="token string">&quot;用户不存在！&quot;</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;data&quot;</span><span class="token operator">:</span><span class="token null">null</span>
+    <span class="token punctuation">}</span>
+</code></pre></div><p>首先我们需要定义一个基本异常，它主要包包含错误码，错误信息。我们也可以在这个基本异常中预先定义一些异常如参数错误、没有权限等。</p> <div class="language-java extra-class"><pre class="language-java"><code><span class="token keyword">package</span> com<span class="token punctuation">.</span>lm<span class="token punctuation">.</span>common<span class="token punctuation">;</span>
+
+<span class="token comment">/**
+ * @author lming.41032@gmail.com
+ * @date 18-11-7 上午11:46
+ */</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">BaseException</span> <span class="token keyword">extends</span> <span class="token class-name">Exception</span> <span class="token punctuation">{</span>
+
+    <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">final</span> <span class="token keyword">long</span> serialVersionUID <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">3392027101671055457</span>L<span class="token punctuation">;</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">final</span> <span class="token keyword">int</span> ERROR_CODE_ILLEGAL_ARGUMENTS <span class="token operator">=</span> <span class="token number">600</span><span class="token punctuation">;</span>
+	
+    <span class="token comment">// 错误码</span>
+    <span class="token keyword">private</span> <span class="token keyword">int</span> code<span class="token punctuation">;</span>
+    <span class="token comment">//错误信息</span>
+    <span class="token keyword">private</span> String errorMessage<span class="token punctuation">;</span>
+
+    <span class="token keyword">public</span> <span class="token function">BaseException</span><span class="token punctuation">(</span><span class="token keyword">int</span> code<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">super</span><span class="token punctuation">(</span><span class="token string">&quot;error code&quot;</span> <span class="token operator">+</span> code<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>code <span class="token operator">=</span> code<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token function">BaseException</span><span class="token punctuation">(</span><span class="token keyword">int</span> code<span class="token punctuation">,</span> Throwable throwable<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">super</span><span class="token punctuation">(</span>throwable<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>code <span class="token operator">=</span> code<span class="token punctuation">;</span>
+
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token function">BaseException</span><span class="token punctuation">(</span><span class="token keyword">int</span> code<span class="token punctuation">,</span> String errorMessage<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">super</span><span class="token punctuation">(</span>errorMessage<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>code <span class="token operator">=</span> code<span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>errorMessage <span class="token operator">=</span> errorMessage<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">getCode</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> code<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> String <span class="token function">getErrorMessage</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> errorMessage<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+</code></pre></div><p>一个系统由多个模块组成，每个模块中都可能会抛出各种各样的异常，这时我们就需要在模块中定义属于本模块中的异常，<font color="red">这些异常需继承BaseException。</font>比如用户登录模块，可能就会抛出用户不存在、密码错误等异常，这时我们定义一个UserException异常，如下所示。</p> <div class="language-java extra-class"><pre class="language-java"><code><span class="token keyword">package</span> com<span class="token punctuation">.</span>lm<span class="token punctuation">.</span>user<span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> com<span class="token punctuation">.</span>lm<span class="token punctuation">.</span>common<span class="token punctuation">.</span>BaseException<span class="token punctuation">;</span>
+
+<span class="token comment">/**
+ * @author lming.41032@gmail.com
+ * @date 18-11-7 上午11:53
+ */</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">UserException</span> <span class="token keyword">extends</span> <span class="token class-name">BaseException</span> <span class="token punctuation">{</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">final</span> <span class="token keyword">int</span> ERROR_CODE_NOT_EXIT <span class="token operator">=</span> <span class="token number">700</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">final</span> <span class="token keyword">int</span> ERROR_CODE_PASSWORD_EEEOR <span class="token operator">=</span> <span class="token number">701</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">public</span> <span class="token function">UserException</span><span class="token punctuation">(</span><span class="token keyword">int</span> code<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">super</span><span class="token punctuation">(</span>code<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+</code></pre></div><p>定义完异常后，我们需要对异常进行处理，这样后台抛出异常后，将直接返还错误Json。我们定义一个统一异常处理类（GlobalExceptionHandle），用@ControllerAdvice注解该类，用注解@ExceptionHandler来定义要处理的异常类型。用@ResponseBody来使返还的数据为Json格式。</p> <div class="language-java extra-class"><pre class="language-java"><code><span class="token keyword">package</span> com<span class="token punctuation">.</span>lm<span class="token punctuation">.</span>dubboconsumer<span class="token punctuation">.</span>common<span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> com<span class="token punctuation">.</span>google<span class="token punctuation">.</span>gson<span class="token punctuation">.</span>Gson<span class="token punctuation">;</span>
+<span class="token keyword">import</span> com<span class="token punctuation">.</span>lm<span class="token punctuation">.</span>common<span class="token punctuation">.</span>BaseException<span class="token punctuation">;</span>
+<span class="token keyword">import</span> com<span class="token punctuation">.</span>lm<span class="token punctuation">.</span>common<span class="token punctuation">.</span>JsonResult<span class="token punctuation">;</span>
+<span class="token keyword">import</span> org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>commons<span class="token punctuation">.</span>lang3<span class="token punctuation">.</span>StringUtils<span class="token punctuation">;</span>
+<span class="token keyword">import</span> org<span class="token punctuation">.</span>slf4j<span class="token punctuation">.</span>Logger<span class="token punctuation">;</span>
+<span class="token keyword">import</span> org<span class="token punctuation">.</span>slf4j<span class="token punctuation">.</span>LoggerFactory<span class="token punctuation">;</span>
+<span class="token keyword">import</span> org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>beans<span class="token punctuation">.</span>factory<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span>Autowired<span class="token punctuation">;</span>
+<span class="token keyword">import</span> org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>context<span class="token punctuation">.</span>MessageSource<span class="token punctuation">;</span>
+<span class="token keyword">import</span> org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>context<span class="token punctuation">.</span>NoSuchMessageException<span class="token punctuation">;</span>
+<span class="token keyword">import</span> org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>web<span class="token punctuation">.</span>bind<span class="token punctuation">.</span>MissingServletRequestParameterException<span class="token punctuation">;</span>
+<span class="token keyword">import</span> org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>web<span class="token punctuation">.</span>bind<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span>ControllerAdvice<span class="token punctuation">;</span>
+<span class="token keyword">import</span> org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>web<span class="token punctuation">.</span>bind<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span>ExceptionHandler<span class="token punctuation">;</span>
+<span class="token keyword">import</span> org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>web<span class="token punctuation">.</span>bind<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span>ResponseBody<span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> javax<span class="token punctuation">.</span>servlet<span class="token punctuation">.</span>http<span class="token punctuation">.</span>HttpServletRequest<span class="token punctuation">;</span>
+<span class="token keyword">import</span> javax<span class="token punctuation">.</span>servlet<span class="token punctuation">.</span>http<span class="token punctuation">.</span>HttpServletResponse<span class="token punctuation">;</span>
+<span class="token keyword">import</span> java<span class="token punctuation">.</span>io<span class="token punctuation">.</span>IOException<span class="token punctuation">;</span>
+<span class="token keyword">import</span> java<span class="token punctuation">.</span>lang<span class="token punctuation">.</span>reflect<span class="token punctuation">.</span>UndeclaredThrowableException<span class="token punctuation">;</span>
+<span class="token keyword">import</span> java<span class="token punctuation">.</span>util<span class="token punctuation">.</span>Locale<span class="token punctuation">;</span>
+
+<span class="token comment">/**
+ * @author lming.41032@gmail.com
+ * @date 18-11-7 下午12:17
+ */</span>
+<span class="token annotation punctuation">@ControllerAdvice</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">GlobalExceptionHandle</span> <span class="token punctuation">{</span>
+
+    <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">final</span> Logger LOGGER <span class="token operator">=</span> LoggerFactory<span class="token punctuation">.</span><span class="token function">getLogger</span><span class="token punctuation">(</span>GlobalExceptionHandle<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">private</span> <span class="token keyword">final</span> MessageSource messageSource<span class="token punctuation">;</span>
+
+    <span class="token annotation punctuation">@Autowired</span>
+    <span class="token keyword">public</span> <span class="token function">GlobalExceptionHandle</span><span class="token punctuation">(</span>MessageSource messageSource<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>messageSource <span class="token operator">=</span> messageSource<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@ExceptionHandler</span><span class="token punctuation">(</span>value <span class="token operator">=</span> Exception<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span>
+    <span class="token annotation punctuation">@ResponseBody</span>
+    <span class="token keyword">public</span> JsonResult <span class="token function">defaultErrorHandle</span><span class="token punctuation">(</span>HttpServletRequest request<span class="token punctuation">,</span> HttpServletResponse response<span class="token punctuation">,</span>
+                                         Exception e<span class="token punctuation">,</span> Locale locale<span class="token punctuation">)</span> <span class="token keyword">throws</span> IOException <span class="token punctuation">{</span>
+        JsonResult result <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">JsonResult</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">int</span> code <span class="token operator">=</span> <span class="token number">500</span><span class="token punctuation">;</span>
+        String errorMessage <span class="token operator">=</span> null<span class="token punctuation">;</span>
+        Throwable exception <span class="token operator">=</span> e<span class="token punctuation">;</span>
+    
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>exception <span class="token keyword">instanceof</span> <span class="token class-name">BaseException</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            code <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>BaseException<span class="token punctuation">)</span> exception<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getCode</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            errorMessage <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>BaseException<span class="token punctuation">)</span> exception<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getErrorMessage</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>exception <span class="token keyword">instanceof</span> <span class="token class-name">MissingServletRequestParameterException</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            code <span class="token operator">=</span> BaseException<span class="token punctuation">.</span>ERROR_CODE_ILLEGAL_ARGUMENTS<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token punctuation">(</span>exception <span class="token keyword">instanceof</span> <span class="token class-name">BaseException</span> <span class="token operator">||</span> exception <span class="token keyword">instanceof</span> <span class="token class-name">MissingServletRequestParameterException</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            LOGGER<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span><span class="token string">&quot;Unknown Exception, URI = &quot;</span> <span class="token operator">+</span> request<span class="token punctuation">.</span><span class="token function">getRequestURI</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> e<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+            LOGGER<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span><span class="token string">&quot;URI = {}, errorCode = {}, errorMessage = {}&quot;</span><span class="token punctuation">,</span> request<span class="token punctuation">.</span><span class="token function">getRequestURI</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> code<span class="token punctuation">,</span> errorMessage<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token comment">// 如果异常中包含了错误信息，则不会通过错误码获取定义的错误信息</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>StringUtils<span class="token punctuation">.</span><span class="token function">isBlank</span><span class="token punctuation">(</span>errorMessage<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            String prefix <span class="token operator">=</span> exception<span class="token punctuation">.</span><span class="token function">getClass</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getSimpleName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            errorMessage <span class="token operator">=</span> <span class="token function">getMessage</span><span class="token punctuation">(</span>prefix <span class="token operator">+</span> <span class="token string">&quot;.&quot;</span> <span class="token operator">+</span> code<span class="token punctuation">,</span> locale<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>errorMessage <span class="token operator">==</span> null<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                errorMessage <span class="token operator">=</span> <span class="token function">getMessage</span><span class="token punctuation">(</span>Integer<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span>code<span class="token punctuation">)</span><span class="token punctuation">,</span> locale<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+        result<span class="token punctuation">.</span><span class="token function">setStatus</span><span class="token punctuation">(</span>code<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        result<span class="token punctuation">.</span><span class="token function">setMessage</span><span class="token punctuation">(</span>errorMessage<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> result<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">private</span> String <span class="token function">getMessage</span><span class="token punctuation">(</span>String key<span class="token punctuation">,</span> Locale locale<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        String errorMessage <span class="token operator">=</span> null<span class="token punctuation">;</span>
+        <span class="token keyword">try</span> <span class="token punctuation">{</span>
+            errorMessage <span class="token operator">=</span> messageSource<span class="token punctuation">.</span><span class="token function">getMessage</span><span class="token punctuation">(</span>key<span class="token punctuation">,</span> null<span class="token punctuation">,</span> locale<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">NoSuchMessageException</span> exception<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            LOGGER<span class="token punctuation">.</span><span class="token function">debug</span><span class="token punctuation">(</span><span class="token string">&quot;ErrorMessage|NotFound|{}&quot;</span><span class="token punctuation">,</span> key<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> errorMessage<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>我们前面定义的异常都是都是只定义了错误码，至于错误信息，我们可以在项目resource下建一个error_codes.properties文件,其中=前面是我们自定义异常中的code，而=号右边的就是错误信息了。</p> <div class="language-properties extra-class"><pre class="language-properties"><code><span class="token attr-name">500</span><span class="token punctuation">=</span><span class="token attr-value">系统错误，请稍后重试！</span>
+<span class="token attr-name">600</span><span class="token punctuation">=</span><span class="token attr-value">参数错误！</span>
+<span class="token attr-name">700</span><span class="token punctuation">=</span><span class="token attr-value">用户不存在！</span>
+<span class="token attr-name">701</span><span class="token punctuation">=</span><span class="token attr-value">用户已经存在！</span>
+</code></pre></div><p>error_codes.properties文件创建完后，需要在aplication.yml(aplication.properties)中设置一下。</p> <div class="language-yaml extra-class"><pre class="language-yaml"><code><span class="token key atrule">spring</span><span class="token punctuation">:</span>
+  <span class="token key atrule">messages</span><span class="token punctuation">:</span>
+    <span class="token key atrule">basename</span><span class="token punctuation">:</span> error_codes
+    <span class="token key atrule">cache-duration</span><span class="token punctuation">:</span> 600s
+</code></pre></div><h2 id="_4-测试"><a href="#_4-测试" aria-hidden="true" class="header-anchor">#</a> 4 测试</h2> <p><b>Service层</b></p> <div class="language-java extra-class"><pre class="language-java"><code><span class="token keyword">package</span> com<span class="token punctuation">.</span>lm<span class="token punctuation">.</span>dubboprovider<span class="token punctuation">.</span>user<span class="token punctuation">.</span>impl<span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> com<span class="token punctuation">.</span>lm<span class="token punctuation">.</span>common<span class="token punctuation">.</span>BaseException<span class="token punctuation">;</span>
+<span class="token keyword">import</span> com<span class="token punctuation">.</span>lm<span class="token punctuation">.</span>user<span class="token punctuation">.</span>User<span class="token punctuation">;</span>
+<span class="token keyword">import</span> com<span class="token punctuation">.</span>lm<span class="token punctuation">.</span>user<span class="token punctuation">.</span>UserException<span class="token punctuation">;</span>
+<span class="token keyword">import</span> com<span class="token punctuation">.</span>lm<span class="token punctuation">.</span>user<span class="token punctuation">.</span>service<span class="token punctuation">.</span>UserService<span class="token punctuation">;</span>
+<span class="token keyword">import</span> org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>commons<span class="token punctuation">.</span>lang3<span class="token punctuation">.</span>StringUtils<span class="token punctuation">;</span>
+<span class="token keyword">import</span> org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>stereotype<span class="token punctuation">.</span>Service<span class="token punctuation">;</span>
+
+<span class="token comment">/**
+ * @author lming.41032@gmail.com
+ * @date 18-11-4 下午2:55
+ */</span>
+<span class="token annotation punctuation">@Service</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">UserServiceImpl</span> <span class="token keyword">implements</span> <span class="token class-name">UserService</span> <span class="token punctuation">{</span>
+
+    <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">final</span> String USERNAME <span class="token operator">=</span> <span class="token string">&quot;lm&quot;</span><span class="token punctuation">;</span>
+    <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">final</span> String PASSWORD <span class="token operator">=</span> <span class="token string">&quot;123&quot;</span><span class="token punctuation">;</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> Boolean <span class="token function">login</span><span class="token punctuation">(</span>String userName<span class="token punctuation">,</span> String password<span class="token punctuation">)</span> <span class="token keyword">throws</span> BaseException <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>StringUtils<span class="token punctuation">.</span><span class="token function">isBlank</span><span class="token punctuation">(</span>userName<span class="token punctuation">)</span> <span class="token operator">||</span> StringUtils<span class="token punctuation">.</span><span class="token function">isBlank</span><span class="token punctuation">(</span>password<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">BaseException</span><span class="token punctuation">(</span>BaseException<span class="token punctuation">.</span>ERROR_CODE_ILLEGAL_ARGUMENTS<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>userName<span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span>USERNAME<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">UserException</span><span class="token punctuation">(</span>UserException<span class="token punctuation">.</span>ERROR_CODE_NOT_EXIT<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>USERNAME<span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span>userName<span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> PASSWORD<span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span>password<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p><b>Controller层</b></p> <div class="language-java extra-class"><pre class="language-java"><code><span class="token keyword">package</span> com<span class="token punctuation">.</span>lm<span class="token punctuation">.</span>dubboconsumer<span class="token punctuation">.</span>user<span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> com<span class="token punctuation">.</span>lm<span class="token punctuation">.</span>common<span class="token punctuation">.</span>BaseException<span class="token punctuation">;</span>
+<span class="token keyword">import</span> com<span class="token punctuation">.</span>lm<span class="token punctuation">.</span>common<span class="token punctuation">.</span>JsonResult<span class="token punctuation">;</span>
+<span class="token keyword">import</span> com<span class="token punctuation">.</span>lm<span class="token punctuation">.</span>user<span class="token punctuation">.</span>User<span class="token punctuation">;</span>
+<span class="token keyword">import</span> com<span class="token punctuation">.</span>lm<span class="token punctuation">.</span>user<span class="token punctuation">.</span>UserException<span class="token punctuation">;</span>
+<span class="token keyword">import</span> com<span class="token punctuation">.</span>lm<span class="token punctuation">.</span>user<span class="token punctuation">.</span>service<span class="token punctuation">.</span>UserService<span class="token punctuation">;</span>
+<span class="token keyword">import</span> org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>beans<span class="token punctuation">.</span>factory<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span>Autowired<span class="token punctuation">;</span>
+<span class="token keyword">import</span> org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>web<span class="token punctuation">.</span>bind<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span>GetMapping<span class="token punctuation">;</span>
+<span class="token keyword">import</span> org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>web<span class="token punctuation">.</span>bind<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span>RequestMapping<span class="token punctuation">;</span>
+<span class="token keyword">import</span> org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>web<span class="token punctuation">.</span>bind<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span>RestController<span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> javax<span class="token punctuation">.</span>servlet<span class="token punctuation">.</span>http<span class="token punctuation">.</span>HttpServletRequest<span class="token punctuation">;</span>
+
+<span class="token comment">/**
+ * @author lming.41032@gmail.com
+ * @date 18-11-5 下午5:10
+ */</span>
+<span class="token annotation punctuation">@RestController</span>
+<span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span><span class="token string">&quot;user&quot;</span><span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">UserRestController</span> <span class="token punctuation">{</span>
+
+    <span class="token keyword">private</span> <span class="token keyword">final</span> UserService userService<span class="token punctuation">;</span>
+
+    <span class="token annotation punctuation">@Autowired</span>
+    <span class="token keyword">public</span> <span class="token function">UserRestController</span><span class="token punctuation">(</span>UserService userService<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>userService <span class="token operator">=</span> userService<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@GetMapping</span><span class="token punctuation">(</span><span class="token string">&quot;login&quot;</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> JsonResult <span class="token function">login</span><span class="token punctuation">(</span>HttpServletRequest request<span class="token punctuation">)</span> <span class="token keyword">throws</span> UserException<span class="token punctuation">,</span> BaseException <span class="token punctuation">{</span>
+        String userName <span class="token operator">=</span> request<span class="token punctuation">.</span><span class="token function">getParameter</span><span class="token punctuation">(</span><span class="token string">&quot;username&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        String password <span class="token operator">=</span> request<span class="token punctuation">.</span><span class="token function">getParameter</span><span class="token punctuation">(</span><span class="token string">&quot;password&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        Boolean flag <span class="token operator">=</span> userService<span class="token punctuation">.</span><span class="token function">login</span><span class="token punctuation">(</span>userName<span class="token punctuation">,</span> password<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>flag<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> JsonResult<span class="token punctuation">.</span><span class="token function">success</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+            <span class="token keyword">throw</span> JsonResult<span class="token punctuation">.</span><span class="token function">failed</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p><strong>登录成功</strong><br> <img src="https://img-blog.csdnimg.cn/20181110010822543.png" alt="登录成功"></p> <p><strong>参数错误：</strong><br></p> <p><img src="https://img-blog.csdnimg.cn/20181110010842168.png" alt="参数错误"></p> <p><strong>用户不存在：</strong><br></p> <p><img src="https://img-blog.csdnimg.cn/20181110010857858.png" alt="用户不存在"></p> <h2 id="_5-总结"><a href="#_5-总结" aria-hidden="true" class="header-anchor">#</a> 5 总结</h2> <ul><li>Spring Boot易学难精,在使用过程中可以发现它的很多乐趣.</li></ul></div> <div id="valine" data-v-22147046></div> <!----> <!----> <div class="page-edit"><!----> <!----></div> <!----> </div> <!----> <!----></div></div>
+    <script src="/assets/js/app.a28f4598.js" defer></script><script src="/assets/js/7.c2f393d1.js" defer></script>
+  </body>
+</html>
